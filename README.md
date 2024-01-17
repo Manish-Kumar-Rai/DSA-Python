@@ -3,7 +3,7 @@ Welcome to my Data Structures and Algorithms (DSA) learning journey! 🚀 This r
 
 ## Overview
 In this repository, you'll find:
-* Code Implementations: Clear and well-documented implementations of various data structures and algorithms in Python programming languages.
+* Code Implementations: Clear and well-documented implementations of various data structures and algorithms in **Python** programming languages.
 * Problem Solving: Solutions to coding challenges and problems from popular platforms like LeetCode, HackerRank, and CodeSignal.
 * Notes and Resources: Comprehensive notes, explanations, and reference materials that I've gathered during my learning process.
 
