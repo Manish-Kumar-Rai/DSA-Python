@@ -1,3 +1,9 @@
+# --------------- frivalds algorithm-----------------------------
+
+"""
+Frivold's algorithm is a probabilistic method for verifying matrix multiplication. Given matrices A, B, and C, the algorithm uses a random vector to check if AB = C with high probability. It is particularly useful in situations where a fast, probabilistic check for correctness is acceptable, even though there is a small chance of error.
+"""
+
 from sys import stdin
 from random import randint
 
