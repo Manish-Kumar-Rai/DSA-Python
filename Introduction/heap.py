@@ -1,6 +1,9 @@
+# ---------------- Heap Class based on quasi-perfect binary tree------------------
+# module for heap in python : - heapq which make an list heap
+
 class OurHeap:
     def __init__(self,items):
-        self.heap = [None]
+        self.heap = [None]   # index 0 will be ignore
         self.rank = {}
         for x in items:
             self.push(x)
@@ -11,15 +14,15 @@ class OurHeap:
     def push(self,x):
         assert x not in self.rank
         i = len(self.heap)
-        self.heap.append(x)
-        self.rank[x] = i
-        self.up(i)
+        self.heap[i] = x
+        self.rank[x] = i 
+        self.up(i)                          #Maintain Heap Order
 
     def pop(self):
         root = self.heap[1]
         del self.rank[root]
-        x = self.heap.pop()
-        if self:
+        x = self.heap.pop()                 # remove the last leaf
+        if self:                            # if heap is not empty
             self.heap[1] = x
             self.rank[x] = 1
             self.down(1)
@@ -27,11 +30,11 @@ class OurHeap:
     
     def up(self,i):
         x = self.heap[i]
-        while i > 1 and x < self.heap[1//2]:
-            self.heap[i] = self.heap[i // 2]
+        while (i > 1 and x < self.heap[i//2]):
+            self.heap[i] = self.heap[i//2]
             self.rank[self.heap[i//2]] = i
             i //= 2
-        self.heap[i] = x
+        self.heap[i] = x                   #insertion index found
         self.rank[x] = i
 
     def down(self,i):
@@ -40,18 +43,19 @@ class OurHeap:
         while True:
             left = 2 * i
             right = left + 1
-            if (right < n and self.heap[right] < x and self.heap[right] < self.heap[left]):
+            if (i < n and self.heap[right] < x and self.heap[right] < self.heap[left]):
                 self.heap[i] = self.heap[right]
-                self.rank[self.heap[right]] = i
+                self.rank[self.heap[right]] = i  #move right child up
                 i = right
-            elif (left < n and self.heap[left] < x):
+            elif (i < n and self.heap[left] < x):
                 self.heap[i] = self.heap[left]
-                self.rank[self.heap[left]] = i
+                self.rank[self.heap[left]] = i    # move left child up
                 i = left
             else:
-                self.heap[i] = x
+                self.heap[i] = x                   # insertion index found
                 self.rank[x] = i
-
+                return
+    
     def update(self,old,new):
         i = self.rank[old]
         del self.rank[old]
