@@ -46,15 +46,39 @@ val_1max,arg_1max = min((-frequency_dict1[letter],letter) for letter in frequenc
 
 #-------- Sorting
 
-L = list(set([randint(50,100) for _ in range(15)]))
+# L = list(set([randint(50,100) for _ in range(15)]))
 
 def closest_value(list):
     list.sort()
+    print(f"Sorted List: {list}")
     closest = [(list[i] - list[i-1],i) for i in range(1,len(list))]
     print(closest)
     val, arg = min(closest)
     return (val,arg)
 
-print(closest_value(L))
+# print(closest_value(L))
 
+# ------ Sweep Line-------------------
 
+"""
+Numerous problem in geometry can be solved with sweep line technique, including many problems concerning intervals. 
+"""
+arrival_point = [randint(1,5) for _ in range(5)]
+dept_point = [randint(6,12) for _ in range(5)]
+myIntervals = [(arr,dept) for arr, dept in zip(arrival_point,dept_point)]
+pprint(myIntervals)
+
+def max_interval_intersec(intervals):
+    B = (
+        [(arr,+1) for arr,_ in intervals]+
+        [(dept,-1) for _, dept in intervals]
+    )
+    B.sort()
+    max_customer = 0
+    best = (max_customer,None)
+    for time,events in B:
+        max_customer += events
+        if best[0] < max_customer:
+            best = (max_customer,time)
+    return best
+pprint(max_interval_intersec(myIntervals))
