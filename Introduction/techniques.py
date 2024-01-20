@@ -98,3 +98,16 @@ def min_scalar_product(x,y):
 
 # print(min_scalar_product(x,y))
 
+#----------- Dynamic Progrramming------------------
+"""
+The idea is to store a few precious bits of information so as to not have to recompute them while solving
+a problem, and then to reflect on how to astutely combine these bits.
+
+"""
+
+# Naive approach
+def fibo_naive(n):
+    if n <= 1:
+        return n
+    return fibo_naive(n-1) + fibo_naive(n-2)
+# print(fibo_naive(32))
