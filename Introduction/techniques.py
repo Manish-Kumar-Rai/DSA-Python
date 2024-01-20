@@ -2,6 +2,7 @@
 from pprint import pprint
 from operator import itemgetter
 from collections import defaultdict, Counter
+from random import randint
 #-- Comparisons
 myTuple = (5,7,8,9,10,1,3)
 largest_number = max(((myTuple[i],i) for i, _ in enumerate(myTuple)))
@@ -17,7 +18,8 @@ for letter in myList:
     frequency_dict[letter] += 1
 # pprint(frequency_dict)
 
-# pprint(Counter(myList).most_common(2))
+nb_occurrence = Counter(myList)
+# pprint(nb_occurrence.most_common(2))
 
 def letter_frequeny(sentence):
     d = {} 
@@ -40,4 +42,19 @@ def majority(sentence):
 frequency_dict1 = majority('Mississippi')
 
 val_1max,arg_1max = min((-frequency_dict1[letter],letter) for letter in frequency_dict1)
-print(val_1max,arg_1max)
+# print(val_1max,arg_1max)
+
+#-------- Sorting
+
+L = list(set([randint(50,100) for _ in range(15)]))
+
+def closest_value(list):
+    list.sort()
+    closest = [(list[i] - list[i-1],i) for i in range(1,len(list))]
+    print(closest)
+    val, arg = min(closest)
+    return (val,arg)
+
+print(closest_value(L))
+
+
