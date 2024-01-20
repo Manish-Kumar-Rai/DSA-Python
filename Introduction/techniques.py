@@ -5,6 +5,7 @@ from collections import defaultdict, Counter
 from random import randint
 from sys import stdin
 import time
+from functools import lru_cache
 #-- Comparisons
 myTuple = (5,7,8,9,10,1,3)
 largest_number = max(((myTuple[i],i) for i, _ in enumerate(myTuple)))
@@ -138,3 +139,12 @@ def fibo_dp_mem(n):
 # print(fibo_dp_mem(35))
 # print(f"Total Time: {time.time()-t1}")
 
+@lru_cache(maxsize=None)
+def fibo_naive2(n):
+    if n <= 1:
+        return n
+    return fibo_naive2(n-1) + fibo_naive2(n-2)
+
+# t1 = time.time()
+# print(fibo_naive2(35))
+# print(f"Total Time: {time.time()-t1}")
