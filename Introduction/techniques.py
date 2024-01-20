@@ -26,4 +26,18 @@ def letter_frequeny(sentence):
         d[letter] = frequency + 1
     return d
 
-pprint(letter_frequeny("mississippi"))
+# pprint(letter_frequeny("mississippi"))
+
+def majority(sentence):
+    d = dict()
+    for letter in sentence:
+        if letter in d:
+            d[letter] += 1
+        else:
+            d[letter] = 1
+    return d
+
+frequency_dict1 = majority('Mississippi')
+
+val_1max,arg_1max = min((-frequency_dict1[letter],letter) for letter in frequency_dict1)
+print(val_1max,arg_1max)
