@@ -19,3 +19,11 @@ for letter in myList:
 
 # pprint(Counter(myList).most_common(2))
 
+def letter_frequeny(sentence):
+    d = {} 
+    for letter in sentence:
+        frequency = d.setdefault(letter,0)
+        d[letter] = frequency + 1
+    return d
+
+pprint(letter_frequeny("mississippi"))
