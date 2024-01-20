@@ -3,6 +3,7 @@ from pprint import pprint
 from operator import itemgetter
 from collections import defaultdict, Counter
 from random import randint
+from sys import stdin
 #-- Comparisons
 myTuple = (5,7,8,9,10,1,3)
 largest_number = max(((myTuple[i],i) for i, _ in enumerate(myTuple)))
@@ -66,7 +67,7 @@ Numerous problem in geometry can be solved with sweep line technique, including 
 arrival_point = [randint(1,5) for _ in range(5)]
 dept_point = [randint(6,12) for _ in range(5)]
 myIntervals = [(arr,dept) for arr, dept in zip(arrival_point,dept_point)]
-pprint(myIntervals)
+# pprint(myIntervals)
 
 def max_interval_intersec(intervals):
     B = (
@@ -81,4 +82,19 @@ def max_interval_intersec(intervals):
         if best[0] < max_customer:
             best = (max_customer,time)
     return best
-pprint(max_interval_intersec(myIntervals))
+# pprint(max_interval_intersec(myIntervals))
+
+
+# ----------- Greedy Algorithm----------------
+
+#--Minimal Scalar Product
+# x = list(map(int,stdin.readline().split()))
+# y = list(map(int,stdin.readline().split()))
+
+def min_scalar_product(x,y):
+    x1 = sorted(x)
+    y1 = sorted(y)
+    return sum(x1[i] * y1[-i-1] for i in range(len(x1)))
+
+# print(min_scalar_product(x,y))
+
