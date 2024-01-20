@@ -4,6 +4,7 @@ from operator import itemgetter
 from collections import defaultdict, Counter
 from random import randint
 from sys import stdin
+import time
 #-- Comparisons
 myTuple = (5,7,8,9,10,1,3)
 largest_number = max(((myTuple[i],i) for i, _ in enumerate(myTuple)))
@@ -110,4 +111,30 @@ def fibo_naive(n):
     if n <= 1:
         return n
     return fibo_naive(n-1) + fibo_naive(n-2)
-# print(fibo_naive(32))
+
+# t1 = time.time()
+# print(fibo_naive(35))
+# print(f"Total Time: {time.time()-t1}")
+
+#dynamic programming
+def fibo_dp(n):
+    mem = [0,1]
+    for i in range(2,n+1):
+        mem.append(mem[-1]+mem[-2])
+    return mem[-1]
+
+# t1 = time.time()
+# print(fibo_dp(35))
+# print(f"Total Time: {time.time()-t1}")
+
+#dynamic + memmory reduce approach
+def fibo_dp_mem(n):
+    mem = [0,1]
+    for i in range(2,n+1):
+        mem[i%2] = mem[0] + mem[1]
+    return mem[n%2]
+
+# t1 = time.time()
+# print(fibo_dp_mem(35))
+# print(f"Total Time: {time.time()-t1}")
+
