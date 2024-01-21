@@ -148,3 +148,34 @@ def fibo_naive2(n):
 # t1 = time.time()
 # print(fibo_naive2(35))
 # print(f"Total Time: {time.time()-t1}")
+
+#----------Encoding of sets by integers--------------
+
+s1 = {0}    #Empty set
+n = 2
+s2 = {1<<n}  #represents:- (2^n)
+s3 = {(1<<n)-1}  #represents:- (2^n) - 1
+A = {1,2,3,4,5}   # Set A
+B = {3,4,5,6,7}   # Set B
+# print(f"logical or: {A|B}")
+# print(f"logical and: {A&B}")
+# print(f"exclusive or : {A^B}")
+# print(f"test of inclusion: {A&B==A}. meaning A is not subset of B.")
+# print(f"test of membership: {s2&A}")
+# print(f"this expression equals 0 if A is empty: {min(A)}, -A&A")
+
+myList = [2,3,4,5,1,6]
+
+# Naive algorithm O(2^2n)
+def three_partition(x):
+    f = [0] * (1<<len(x))
+    for i, _ in enumerate(x):
+        for S in range(1<<i):
+            f[S|(1<<i)] = f[S] + x[i]
+    for A in range(1 << len(x)):
+        for B in range(1 << len(x)):
+            if A & B == 0 and f[A] == f[B] and 3 * f[A] == f[-1]:
+                return (A, B, ((1<< len(x))-1)^A^B)
+    return None
+pprint(three_partition(myList))
+
