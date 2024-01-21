@@ -72,6 +72,9 @@ myIntervals = [(arr,dept) for arr, dept in zip(arrival_point,dept_point)]
 # pprint(myIntervals)
 
 def max_interval_intersec(intervals):
+    """
+    Manish
+    """
     B = (
         [(arr,+1) for arr,_ in intervals]+
         [(dept,-1) for _, dept in intervals]
@@ -175,7 +178,11 @@ def three_partition(x):
     for A in range(1 << len(x)):
         for B in range(1 << len(x)):
             if A & B == 0 and f[A] == f[B] and 3 * f[A] == f[-1]:
-                return (A, B, ((1<< len(x))-1)^A^B)
+                print(f[A],f[B],f[C := ((1<< len(x))-1)^A^B],f[-1])
+                return (A, B, C)
     return None
-pprint(three_partition(myList))
+# pprint(three_partition(myList))
+
+#---------Binary Search----------------------
+
 
