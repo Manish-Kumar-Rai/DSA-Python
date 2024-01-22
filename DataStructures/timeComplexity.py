@@ -20,4 +20,18 @@ def printNumberSeries(n):
         i += 1 
     print(",".join(myList))
 
-timeComplexity.timeToExecute(printNumberSeries,1000)
+# timeComplexity.timeToExecute(printNumberSeries,1000)
+
+def intToStr(n):    #O(log n)
+    digits = "0123456789"
+    if n == 0:
+        return "0"
+    result = ""
+    while n > 0:
+        result = digits[n%10] + result
+        n //= 10    # when inputs divide , generally log case
+    return result
+
+print(intToStr(5))
+
+# log property :- input add, output multiply
