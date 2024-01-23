@@ -1,5 +1,6 @@
 #--------------------- Measuring Time Complexity-----------
 import time
+import sys
 # 1. Measuring time to execute
 class TimeComplexity:
     def timeToExecute(self,fn,n):
@@ -32,6 +33,14 @@ def intToStr(n):    #O(log n)
         n //= 10    # when inputs divide , generally log case
     return result
 
-print(intToStr(5))
+# print(intToStr(5))
 
 # log property :- input add, output multiply
+
+#------------ List ----------------------
+# To Show list is dynamic in python
+L = []
+
+# for i in range(1,101):
+#     print(f"value: {i}, size: {sys.getsizeof(L)}")
+#     L.append(i)
