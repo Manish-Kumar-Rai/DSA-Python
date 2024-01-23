@@ -288,16 +288,37 @@ class LinkedList:
         if self.head == None:
             return "Empty List"
         
+        if self.head.data == value:
+            return self.delete_head()
+        
         current_node = self.head
         
         while current_node.next != None:
-            if current_node.next.data == value and current_node.next != None:
-                current_node.next = current_node.next.next
-                self.n -= 1
-                return
+            if current_node.next.data == value:
+                break
             current_node = current_node.next
+        
+        if current_node.next == None:
+            return "Item Not Found."
+        else:
+            current_node.next = current_node.next.next
+            self.n -= 1
 
-        return "Item not Found."
+    def search(self,item):
+        if self.head == None:
+            return "Empty List"
+        
+        current_node = self.head
+        pos = 0
+
+        while current_node != None:
+            if current_node.data == item:
+                return pos
+            current_node = current_node.next
+            pos += 1
+
+        return "Item Not Found"
+        
 linkedList = LinkedList()
 # linkedList.appendLeft("Rai")
 # linkedList.appendLeft("Kumar")
@@ -316,8 +337,11 @@ linkedList.append("Rai")
 # print(linkedList.pop())
 # print(linkedList.pop())
 # linkedList.append(2024)
-print(linkedList.remove("Kumar"))
+# print(linkedList.remove("Manish"))
+# print(linkedList.remove("Kumar"))
+# print(linkedList.remove("Rai"))
 print(linkedList)
 print(len(linkedList))
+print(f"position: {linkedList.search('vikas')}")
 
 
