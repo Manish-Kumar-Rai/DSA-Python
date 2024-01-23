@@ -181,7 +181,143 @@ L1.append(56)
 L1.append(91)
 L1.append(23)
 
-print(L1)
-print(f"min: {L1.min()}")
-print(f"max: {L1.max()}")
-print(f"sum: {L1.sum()}")
+# print(L1)
+# print(f"min: {L1.min()}")
+# print(f"max: {L1.max()}")
+# print(f"sum: {L1.sum()}")
+
+#----------------------- Linked List ----------------------
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        # No. of nodes in linked list
+        self.n = 0
+
+    def __len__(self):
+        return self.n
+    
+    def appendLeft(self,data):
+        new_node = Node(data)
+        if self.head == None:
+            self.head = new_node
+            self.tail = new_node
+            self.n += 1
+            return
+        new_node.next = self.head
+        self.head = new_node
+        self.n += 1
+
+    def append(self,data):
+        new_node = Node(data)
+        if self.head == None:
+            self.head = new_node
+            self.tail = new_node
+            self.n += 1
+            return
+        
+        self.tail.next = new_node
+        self.tail = new_node
+        self.n += 1
+
+    def __str__(self):
+        if self.head == None:
+            return "Empty linked list."
+        current_node = self.head
+        result = ""
+        while current_node != None:
+            result = result +  str(current_node.data) + "->"
+            current_node = current_node.next
+        return result[:-2]
+
+
+    def insert_after(self,after,data):
+        new_node = Node(data)
+        current_node = self.head
+        while current_node != None:
+            if current_node.data == after:
+                break
+            current_node = current_node.next
+                
+        if current_node != None:
+            new_node.next = current_node.next
+            current_node.next = new_node
+            self.n +=1
+        else:
+            return "Item not found"
+
+    def clear(self):
+        self.head = None
+        self.tail = None
+        self.n = 0
+
+    def delete_head(self):
+        if self.head == None:
+            return "Empty list."
+        self.head = self.head.next
+        self.n -= 1
+
+    def pop(self):
+
+        if self.head == None:
+            return "Empty List"
+        
+        current_node = self.head
+
+        # if Linked list contains only one item
+        if current_node.next == None:
+            self.tail = None
+            return self.delete_head()
+
+        while current_node.next.next != None:
+            current_node = current_node.next
+
+        # current_node is 2nd last node
+        item = current_node.next.data
+        current_node.next = None
+        self.tail = current_node
+        self.n -= 1
+        return item
+    
+    def remove(self,value):
+        if self.head == None:
+            return "Empty List"
+        
+        current_node = self.head
+        
+        while current_node.next != None:
+            if current_node.next.data == value and current_node.next != None:
+                current_node.next = current_node.next.next
+                self.n -= 1
+                return
+            current_node = current_node.next
+
+        return "Item not Found."
+linkedList = LinkedList()
+# linkedList.appendLeft("Rai")
+# linkedList.appendLeft("Kumar")
+# linkedList.appendLeft("Manish")
+linkedList.append("Manish")
+linkedList.append("Kumar")
+linkedList.append("Rai")
+# print(len(linkedList))
+# linkedList.append(1998)
+# linkedList.insert_after("Kumar","Inserted")
+# print(linkedList.insert_after("1231","oadj"))
+# linkedList.clear()
+# linkedList.delete_head()
+# print(linkedList.pop())
+# print(linkedList.pop())
+# print(linkedList.pop())
+# print(linkedList.pop())
+# linkedList.append(2024)
+print(linkedList.remove("Kumar"))
+print(linkedList)
+print(len(linkedList))
+
+
