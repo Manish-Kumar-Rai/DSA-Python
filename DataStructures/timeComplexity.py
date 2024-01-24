@@ -318,6 +318,18 @@ class LinkedList:
             pos += 1
 
         return "Item Not Found"
+    
+    def __getitem__(self,index):
+        current_node = self.head
+        pos = 0
+
+        while current_node != None:
+            if pos == index:
+                return current_node.data
+            current_node = current_node.next
+            pos += 1
+        
+        return "IndexError"
         
 linkedList = LinkedList()
 # linkedList.appendLeft("Rai")
@@ -342,6 +354,7 @@ linkedList.append("Rai")
 # print(linkedList.remove("Rai"))
 print(linkedList)
 print(len(linkedList))
-print(f"position: {linkedList.search('vikas')}")
+print(f"position: {linkedList.search('Kumar')}")
+print(linkedList[1])
 
 
