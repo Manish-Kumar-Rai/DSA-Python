@@ -544,38 +544,38 @@ class Stack:
 #Stack using list in python
     
 class Stack2:
-    def __init__(self):
-        self.stack = []
+    def __init__(self,size):
+        self.size = size
+        self.stack = [None] * self.size
+        self.top = -1
 
-    def __len__(self):
-        return len(self.stack)
-    
-    def __str__(self):
-        result = ""
-        for i in self.stack[::-1]:
-            result += str(i) + "->"
-        return result[:-2]
-    
     def push(self,value):
-        self.stack.append(value)
+        if self.top == self.size - 1:
+            return "overflow"
+        else:
+            self.top += 1
+            self.stack[self.top] = value
 
     def pop(self):
-        return self.stack.pop()
+        if self.top == -1 :
+            return "Stack is empty"
+        else:
+            item = self.stack[self.top]
+            self.top -= 1
+            return item
 
-    def peek(self):
-        return self.stack[-1]
-    
-    def isempty(self):
-        return self.__len__() == 0 
-
-# myStack2 = Stack2()
-# print(len(myStack2))
-# print(myStack2.isempty())
-# myStack2.push("Rai")
-# myStack2.push("Kumar")
-# myStack2.push("Manish")
-# print(myStack2)
-# print(myStack2.peek())
+    def traverse(self):
+        for i in range(self.top+1):
+            print(self.stack[i],end=" ")
+mystack = Stack2(3)
+mystack.push(4)
+mystack.push(5)
+mystack.push(6)
+print(mystack.pop())
+print(mystack.pop())
+print(mystack.pop())
+mystack.traverse()
+# print(mystack.stack)
     
 #--------------Question----------------
 def reverse_string(text):
@@ -643,15 +643,15 @@ def balanced_parenthesis(text):
     print(mystack.isempty())
     return mystack.isempty()
 
-balanced_parenthesis("[{(a+b)+(c+d)}]")
+# balanced_parenthesis("[{(a+b)+(c+d)}]")
 
 #Celebrity Problem---------------
 
 matrix = [
     [0,0,1,1],
-    [0,0,1,0],
-    [0,0,0,0],
-    [0,0,1,0]
+    [0,0,1,1],
+    [1,0,0,1],
+    [0,0,0,0]
 ]
 
 def find_the_celeb(matrix):
@@ -663,12 +663,12 @@ def find_the_celeb(matrix):
     while len(mystack) >= 2:
         i = mystack.pop()
         j = mystack.pop()
-        
+
         if matrix[i][j] == 0:
-            #j is not celebrity
+            # j is not a celebrity
             mystack.push(i)
         else:
-            # i is not celebrity
+            # i is not a celebrity
             mystack.push(j)
 
     celeb = mystack.pop()
@@ -676,9 +676,9 @@ def find_the_celeb(matrix):
     for i in range(len(matrix)):
         if i != celeb:
             if matrix[celeb][i] == 1 or matrix[i][celeb] == 0:
-                print("No celebrity found.")
-                return
-    return (True,celeb)
+                return "No one is celebrity."
+        
+    return f"The celebrity is {celeb}."
 
 
 # print(find_the_celeb(matrix))
