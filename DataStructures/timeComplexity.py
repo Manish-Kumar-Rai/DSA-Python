@@ -516,7 +516,7 @@ class Stack:
         return self.top.data
 
     def isempty(self):
-        return True if self.top == None else False
+        return self.top == None
 
     def __len__(self):
         return self.n
@@ -566,13 +566,61 @@ class Stack2:
         return self.stack[-1]
     
     def isempty(self):
-        return True if self.__len__() == 0 else False
+        return self.__len__() == 0 
 
-myStack2 = Stack2()
-print(len(myStack2))
-print(myStack2.isempty())
-myStack2.push("Rai")
-myStack2.push("Kumar")
-myStack2.push("Manish")
-print(myStack2)
-print(myStack2.peek())
+# myStack2 = Stack2()
+# print(len(myStack2))
+# print(myStack2.isempty())
+# myStack2.push("Rai")
+# myStack2.push("Kumar")
+# myStack2.push("Manish")
+# print(myStack2)
+# print(myStack2.peek())
+
+
+#---------------- Queues --------------------------
+
+# Queue using list
+    
+class OurQueue:
+    def __init__(self):
+        self.in_stack = []
+        self.out_stack = []
+
+    def __len__(self):
+        return len(self.in_stack) + len(self.out_stack)
+    
+    def __str__(self):
+        result = ""
+        queue = self.out_stack[::-1] + self.in_stack
+        for i in range(len(queue)):
+            result += str(queue[i]) + "->"
+        return result[:-2]
+    
+    def enqueue(self,item):
+        self.in_stack.append(item)
+
+    def dequeue(self):
+        if not self.out_stack:
+            if not self.in_stack:
+                return "Empty Queue."
+            self.out_stack = self.in_stack[::-1]
+            self.in_stack = []
+        return self.out_stack.pop()
+    
+    def __getitem__(self,index):
+        queue = self.out_stack[::-1] + self.in_stack
+        return queue[index]
+    
+
+# queue = OurQueue()
+# queue.enqueue("Manish")
+# queue.enqueue("Kumar")
+# queue.enqueue("Rai")
+# print(queue)
+# print(queue[1])
+# print(len(queue))
+# print(queue.dequeue())
+# print(queue.dequeue())
+# print(queue.dequeue())
+# print(queue.dequeue())
