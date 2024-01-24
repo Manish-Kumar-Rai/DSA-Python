@@ -645,6 +645,44 @@ def balanced_parenthesis(text):
 
 # balanced_parenthesis("{({})}")
 
+#Celebrity Problem---------------
+
+matrix = [
+    [0,0,1,1],
+    [0,0,1,0],
+    [0,0,0,0],
+    [0,0,1,0]
+]
+
+def find_the_celeb(matrix):
+    mystack = Stack()
+
+    for i in range(len(matrix)):
+        mystack.push(i)
+
+    while len(mystack) >= 2:
+        i = mystack.pop()
+        j = mystack.pop()
+        
+        if matrix[i][j] == 0:
+            #j is not celebrity
+            mystack.push(i)
+        else:
+            # i is not celebrity
+            mystack.push(j)
+
+    celeb = mystack.pop()
+
+    for i in range(len(matrix)):
+        if i != celeb:
+            if matrix[celeb][i] == 1 or matrix[i][celeb] == 0:
+                print("No celebrity found.")
+                return
+    return (True,celeb)
+
+
+print(find_the_celeb(matrix))
+
 
 #---------------- Queues --------------------------
 
