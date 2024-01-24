@@ -465,7 +465,7 @@ duplicate_list = LinkedList()
 for i in [10,10,20,20,30,30,30,40,40,50,50]:
     duplicate_list.append(i)
 
-print(duplicate_list)
+# print(duplicate_list)
 
 def remove_duplicate(list):
     curr = list.head
@@ -477,5 +477,63 @@ def remove_duplicate(list):
                 curr.next = curr.next.next
         curr = curr.next
 
-remove_duplicate(duplicate_list)
-print(duplicate_list)
+# remove_duplicate(duplicate_list)
+# print(duplicate_list)
+
+
+#-------------------- Stacks------------------
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class Stack:
+    def __init__(self):
+        self.top = None
+        self.n = 0
+
+    def push(self,item):
+        node = Node(item)
+        if self.isempty():
+            self.top = node
+        else:
+            node.next = self.top
+            self.top = node
+        self.n += 1
+
+    def pop(self):
+        if self.isempty():
+            return "Stack is Empty."
+        
+        item = self.top.data
+        self.top = self.top.next
+        self.n -= 1
+        return item
+    
+    def peek(self):
+        return self.top.data
+
+    def isempty(self):
+        return True if self.top == None else False
+
+    def __len__(self):
+        return self.n
+    
+    def __str__(self):
+        curr = self.top
+        result = ""
+        while curr != None:
+            result = result + str(curr.data) + "->"
+            curr = curr.next
+        return result[:-2]
+    
+myStack = Stack()
+myStack.push("Rai")
+myStack.push("Kumar")
+myStack.push("Manish")
+# print(myStack.isempty())
+print(myStack)
+
+print(myStack.pop())
+print(len(myStack))
+print(myStack.peek())
