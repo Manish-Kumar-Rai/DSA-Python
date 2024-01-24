@@ -567,14 +567,14 @@ class Stack2:
     def traverse(self):
         for i in range(self.top+1):
             print(self.stack[i],end=" ")
-mystack = Stack2(3)
-mystack.push(4)
-mystack.push(5)
-mystack.push(6)
-print(mystack.pop())
-print(mystack.pop())
-print(mystack.pop())
-mystack.traverse()
+# mystack = Stack2(3)
+# mystack.push(4)
+# mystack.push(5)
+# mystack.push(6)
+# print(mystack.pop())
+# print(mystack.pop())
+# print(mystack.pop())
+# mystack.traverse()
 # print(mystack.stack)
     
 #--------------Question----------------
@@ -732,7 +732,7 @@ class OurQueue:
 # print(queue.dequeue())
 
 
-#Using linked list
+#Queue Using linked list
     
 class Node:
     def __init__(self,data):
@@ -795,3 +795,19 @@ class OurQueue2:
 # print(queue2.dequeue())
 # print(len(queue2))
 # print(queue2)
+            
+
+#Question on queues-------------
+
+queue = OurQueue()
+
+def fun(num):
+    if num == 0:
+        return 0
+    else:
+        queue.enqueue(num%10)
+        res = fun(num//10)
+        res = res*10 + queue.dequeue()
+        return res
+    
+print(fun(123))
