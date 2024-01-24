@@ -423,9 +423,59 @@ def reverse_ll(list):
 # print(L)
 
 string_ll = LinkedList()
-for i in "An*/apple*a/day//keeps/*a//doctor*Away":
+for i in "An*/apple*a/day//keeps/*a//doctor*/away":
     string_ll.append(i)
 
-print(string_ll)
+# print(string_ll)
+
+string_ll2 = LinkedList()
+for i in "Hello,*/i'm//manish**rai.":
+    string_ll2.append(i)
+
+# print(string_ll2)
+
+def string_beauty(list):
+    curr = list.head
+    while curr != None:
+        if curr.data == "*" or curr.data == "/":
+            if curr.next.data == "*" or curr.next.data == "/":
+                curr.data = " "
+                curr.next = curr.next.next
+                curr.next.data = curr.next.data.upper()
+                curr = curr.next
+                continue
+            
+            curr.data = " "
+        curr = curr.next
+
+    result = ""
+    curr = list.head
+    while curr != None:
+        result += curr.data
+        curr = curr.next
+    return result
+
+# print(string_beauty(string_ll))
+
+# print(string_beauty(string_ll2))
 
 
+duplicate_list = LinkedList()
+
+for i in [10,10,20,20,30,30,30,40,40,50,50]:
+    duplicate_list.append(i)
+
+print(duplicate_list)
+
+def remove_duplicate(list):
+    curr = list.head
+    while curr != None:
+        if curr.next != None:
+            while curr.data == curr.next.data:
+                if curr.next.next == None:
+                    break
+                curr.next = curr.next.next
+        curr = curr.next
+
+remove_duplicate(duplicate_list)
+print(duplicate_list)
