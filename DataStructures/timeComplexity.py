@@ -482,6 +482,8 @@ def remove_duplicate(list):
 
 
 #-------------------- Stacks------------------
+        
+#Using linked list
 class Node:
     def __init__(self,data):
         self.data = data
@@ -527,13 +529,50 @@ class Stack:
             curr = curr.next
         return result[:-2]
     
-myStack = Stack()
-myStack.push("Rai")
-myStack.push("Kumar")
-myStack.push("Manish")
+# myStack = Stack()
+# myStack.push("Rai")
+# myStack.push("Kumar")
+# myStack.push("Manish")
 # print(myStack.isempty())
-print(myStack)
+# print(myStack)
 
-print(myStack.pop())
-print(len(myStack))
-print(myStack.peek())
+# print(myStack.pop())
+# print(len(myStack))
+# print(myStack.peek())
+    
+
+#Stack using list in python
+    
+class Stack2:
+    def __init__(self):
+        self.stack = []
+
+    def __len__(self):
+        return len(self.stack)
+    
+    def __str__(self):
+        result = ""
+        for i in self.stack[::-1]:
+            result += str(i) + "->"
+        return result[:-2]
+    
+    def push(self,value):
+        self.stack.append(value)
+
+    def pop(self):
+        return self.stack.pop()
+
+    def peek(self):
+        return self.stack[-1]
+    
+    def isempty(self):
+        return True if self.__len__() == 0 else False
+
+myStack2 = Stack2()
+print(len(myStack2))
+print(myStack2.isempty())
+myStack2.push("Rai")
+myStack2.push("Kumar")
+myStack2.push("Manish")
+print(myStack2)
+print(myStack2.peek())
