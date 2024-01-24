@@ -2,6 +2,7 @@
 import time
 import sys
 import ctypes
+from random import randint
 # 1. Measuring time to execute
 class TimeComplexity:
     def timeToExecute(self,fn,n):
@@ -335,9 +336,9 @@ linkedList = LinkedList()
 # linkedList.appendLeft("Rai")
 # linkedList.appendLeft("Kumar")
 # linkedList.appendLeft("Manish")
-linkedList.append("Manish")
-linkedList.append("Kumar")
-linkedList.append("Rai")
+# linkedList.append("Manish")
+# linkedList.append("Kumar")
+# linkedList.append("Rai")
 # print(len(linkedList))
 # linkedList.append(1998)
 # linkedList.insert_after("Kumar","Inserted")
@@ -352,9 +353,79 @@ linkedList.append("Rai")
 # print(linkedList.remove("Manish"))
 # print(linkedList.remove("Kumar"))
 # print(linkedList.remove("Rai"))
-print(linkedList)
-print(len(linkedList))
-print(f"position: {linkedList.search('Kumar')}")
-print(linkedList[1])
+# print(linkedList)
+# print(len(linkedList))
+# print(f"position: {linkedList.search('Kumar')}")
+# print(linkedList[1])
+
+
+L = LinkedList()
+for i in range(1,6):
+    L.append(i)
+
+# print(L)
+
+# Question linked list
+def fun(head):
+    if (head == None):
+        return
+    if head.next.next != None:
+        print(head.data,end=" ")
+        fun(head.next)
+    print(head.data,end=" ")
+
+# fun(L.head)
+    
+def replace_max_value_node(head,value):
+    max = 0
+    max_node = None
+    if head == None:
+        return "Empty List"
+    current_node = head
+    while current_node != None:
+        if current_node.data >= max:
+            max = current_node.data
+            max_node = current_node
+        current_node = current_node.next
+
+    max_node.data = value
+
+# replace_max_value_node(L.head,"Max")    
+# print(L)
+
+def odd_sum(head):
+    sum = 0
+    current_node = head
+    pos = 0
+    while current_node != None:
+        if pos % 2 != 0:
+            sum += current_node.data
+        current_node = current_node.next
+        pos += 1
+    
+    return sum
+
+# print(odd_sum(L.head))
+
+def reverse_ll(list):
+    curr = list.head
+    prev = None
+    while curr != None:
+        next_node = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_node
+    
+    list.head = prev
+
+
+# reverse_ll(L)
+# print(L)
+
+string_ll = LinkedList()
+for i in "An*/apple*a/day//keeps/*a//doctor*Away":
+    string_ll.append(i)
+
+print(string_ll)
 
 
