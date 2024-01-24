@@ -576,6 +576,74 @@ class Stack2:
 # myStack2.push("Manish")
 # print(myStack2)
 # print(myStack2.peek())
+    
+#--------------Question----------------
+def reverse_string(text):
+    stack = Stack()
+
+    for i in str(text):
+        stack.push(i)
+
+    rev_string = ""
+    while not stack.isempty():
+        rev_string += stack.pop()
+    
+    return rev_string
+
+# print(reverse_string("123456789"))
+
+class UndoRedo:
+    def __init__(self,text):
+        self.main = Stack()
+        self.backup = Stack()
+        for i in text:
+            self.main.push(i)
+
+    def __str__(self):
+        return str(self.main).replace("->","")[::-1]
+    
+    def undo(self):
+        if self.main.isempty():
+            return
+        self.backup.push(self.main.pop())
+
+    def redo(self):
+        if self.backup.isempty():
+            return
+        self.main.push(self.backup.pop())
+    
+# myString = UndoRedo("Manish")
+# print(myString)
+# myString.undo()
+# myString.undo()
+# myString.undo()
+# myString.undo()
+# print(myString)
+# myString.redo()
+# myString.redo()
+# myString.redo()
+# myString.redo()
+# print(myString)
+        
+
+def balanced_parenthesis(text):
+    mystack = Stack()
+    for i in text:
+        if i == "{" or i == "(" or i == "[":
+            mystack.push(i)
+        if i == "}":
+            if mystack.peek() == "{":
+                mystack.pop()
+        if i == ")":
+            if mystack.peek() == "(":
+                mystack.pop()
+        if i == "]":
+            if mystack.peek() == "[":
+                mystack.pop()
+    print(mystack.isempty())
+    return mystack.isempty()
+
+# balanced_parenthesis("{({})}")
 
 
 #---------------- Queues --------------------------
@@ -679,13 +747,13 @@ class OurQueue2:
             curr = curr.next
             pos += 1
     
-queue2 = OurQueue2()
-queue2.enqueue("Manish")
-queue2.enqueue("Kumar")
-queue2.enqueue("Rai")
-print(len(queue2))
-print(queue2)
-print(queue2[1])
+# queue2 = OurQueue2()
+# queue2.enqueue("Manish")
+# queue2.enqueue("Kumar")
+# queue2.enqueue("Rai")
+# print(len(queue2))
+# print(queue2)
+# print(queue2[1])
 # print(queue2.dequeue())
 # print(len(queue2))
 # print(queue2)
