@@ -643,7 +643,7 @@ def balanced_parenthesis(text):
     print(mystack.isempty())
     return mystack.isempty()
 
-# balanced_parenthesis("{({})}")
+balanced_parenthesis("[{(a+b)+(c+d)}]")
 
 #Celebrity Problem---------------
 
@@ -681,7 +681,7 @@ def find_the_celeb(matrix):
     return (True,celeb)
 
 
-print(find_the_celeb(matrix))
+# print(find_the_celeb(matrix))
 
 
 #---------------- Queues --------------------------
