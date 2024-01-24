@@ -810,4 +810,6 @@ def fun(num):
         res = res*10 + queue.dequeue()
         return res
     
-print(fun(123))
+# print(fun(123))
+    
+#-----------------------Hashing ---------------------------------
