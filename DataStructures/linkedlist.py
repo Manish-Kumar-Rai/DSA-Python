@@ -144,7 +144,7 @@ class LinkedList:
         
         return "IndexError"
         
-linkedList = LinkedList()
+# linkedList = LinkedList()
 # linkedList.appendLeft("Rai")
 # linkedList.appendLeft("Kumar")
 # linkedList.appendLeft("Manish")
