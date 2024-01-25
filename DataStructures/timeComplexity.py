@@ -887,12 +887,15 @@ class Dictionary:
         return pos
     
 
-mydict = Dictionary(5)
-mydict.put("manish",26)
-mydict.put("vikas",29)
-mydict.put("avinash",32)
-mydict.put("sunita",55)
-mydict.put("rsrai",58)
-mydict.put("kiaan",1)
-print(mydict)
-print(len(mydict))
+# mydict = Dictionary(5)
+# mydict.put("manish",26)
+# mydict.put("vikas",29)
+# mydict.put("avinash",32)
+# mydict.put("sunita",55)
+# mydict.put("rsrai",58)
+# mydict.put("kiaan",1)
+# print(mydict)
+# print(len(mydict))
+
+
+#------------Implement chaining method-------------------------- 
