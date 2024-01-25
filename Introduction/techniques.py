@@ -72,9 +72,6 @@ myIntervals = [(arr,dept) for arr, dept in zip(arrival_point,dept_point)]
 # pprint(myIntervals)
 
 def max_interval_intersec(intervals):
-    """
-    Manish
-    """
     B = (
         [(arr,+1) for arr,_ in intervals]+
         [(dept,-1) for _, dept in intervals]
@@ -87,7 +84,7 @@ def max_interval_intersec(intervals):
         if best[0] < max_customer:
             best = (max_customer,time)
     return best
-# pprint(max_interval_intersec(myIntervals))
+pprint(max_interval_intersec(myIntervals))
 
 
 # ----------- Greedy Algorithm----------------
